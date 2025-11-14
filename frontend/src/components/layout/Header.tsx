@@ -1,6 +1,9 @@
 import { Button } from '../ui/button';
+import { useAuth } from '@/hooks/useAuth';
+import { LogOut } from 'lucide-react';
 
 export const Header = () => {
+  const { user, logout, isLogoutLoading } = useAuth();
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -43,6 +46,24 @@ export const Header = () => {
             >
               Contact
             </Button>
+            <div className="flex items-center space-x-4 ml-4 pl-4 border-l">
+              <span className="text-sm text-muted-foreground">
+                {user?.name || user?.email}
+              </span>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => logout()}
+                disabled={isLogoutLoading}
+              >
+                {isLogoutLoading ? (
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current mr-2" />
+                ) : (
+                  <LogOut className="h-4 w-4 mr-2" />
+                )}
+                Sign out
+              </Button>
+            </div>
           </div>
           
           <div className="md:hidden">

@@ -24,6 +24,7 @@ model User {
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   Token           Token[]
+  Contact         Contact[]
 }
 
 model Token {
@@ -40,6 +41,17 @@ model Token {
 enum Role {
   USER
   ADMIN
+}
+
+model Contact {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  subject   String
+  message   String
+  createdAt DateTime @default(now())
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
 }
 
 enum TokenType {

@@ -1,12 +1,13 @@
-# Frontend Implementation Plan: Single Page HTML App
+# Frontend Implementation Plan: Single Page HTML App with Authentication
 
 ## Tech Stack
 - **React 19** with TypeScript
-- **Vite** for build tooling
+- **Vite** for build tooling  
 - **shadcn/ui** for UI components
 - **Tailwind CSS v4** for styling
 - **React Query** for data fetching
 - **React Hook Form** with Zod validation
+- **React Router** for navigation and authentication routing
 
 ## Current Foundation
 ✅ **Already Available:**
@@ -18,6 +19,23 @@
 - Basic project structure with utils, hooks, types
 
 ## Implementation Plan
+
+### Phase 0: Authentication System (NEW - PRIORITY)
+**Files to create/modify:**
+- `src/pages/LoginPage.tsx` - Login form with validation
+- `src/components/auth/AuthProvider.tsx` - Authentication context provider
+- `src/components/auth/ProtectedRoute.tsx` - Route protection component
+- `src/hooks/useAuth.ts` - Authentication hook
+- Update `src/App.tsx` - Add routing with React Router
+- Update `src/lib/api.ts` - Complete login redirect TODOs
+
+**Authentication Features:**
+- Email/password login form
+- Form validation with Zod
+- Integration with existing auth service
+- Protected routes for authenticated content
+- Automatic token refresh handling
+- Logout functionality
 
 ### Phase 1: Core App Structure
 **File: `src/App.tsx`**
